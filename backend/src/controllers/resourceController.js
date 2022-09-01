@@ -51,7 +51,52 @@ const updateResource = async (req = request, res = response) => {
   }
 };
 
+const getResources = async (req = request, res = response) => {
+  try {
+    const { skip = 0, limit = 10 } = req.query;
+    const resources = await Resource.find({}, "", {
+      limit,
+      skip,
+    });
+    res.status(200).json({
+      ok: true,
+      resources,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: "Something went wrong, try again",
+    });
+  }
+};
+
+const getResourceById = async (req = request, res = response) => {
+  try {
+    const resourceID = req.params.id;
+    const resourceDB = await Resource.findById(resourceID);
+    if (!resourceDB) {
+      return res.status(404).json({
+        ok: true,
+        msg: "Resource not found",
+      });
+    }
+    res.status(200).json({
+      ok: true,
+      resource: resourceDB,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: "Something went wrong, try again",
+    });
+  }
+};
+
 module.exports = {
   createResource,
   updateResource,
+  getResources,
+  getResourceById,
 };
