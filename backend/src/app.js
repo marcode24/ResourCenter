@@ -4,4 +4,6 @@ require("dotenv").config();
 
 app.use(express.json());
 
+app.use("/api/resource", require("./routes/resourceRoute"));
+
 module.exports = app;
