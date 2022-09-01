@@ -28,6 +28,30 @@ const createResource = async (req = request, res = response) => {
   }
 };
 
+const updateResource = async (req = request, res = response) => {
+  try {
+    const { id: resourceID } = req.params;
+    const { category, ...changes } = req.body;
+    const resourceUpdated = await Resource.findByIdAndUpdate(
+      resourceID,
+      changes,
+      { new: true }
+    );
+    res.status(200).json({
+      ok: true,
+      msg: "Resource updated correctly",
+      resource: resourceUpdated,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: "Something went wrong, try again",
+    });
+  }
+};
+
 module.exports = {
   createResource,
+  updateResource,
 };
