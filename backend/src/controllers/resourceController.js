@@ -1,11 +1,20 @@
 const { request, response } = require("express");
+const categoryModel = require("../models/categoryModel");
 const Resource = require("../models/resourceModel");
 
 const createResource = async (req = request, res = response) => {
   try {
-    const name = req.body.name || null;
-    const regexName = new RegExp(name, "i");
-    const existResource = await Resource.findOne({ name: regexName });
+    const { name, category } = req.body;
+    const existCategory = await categoryModel.findById(category);
+    if (!existCategory) {
+      return res.status(404).json({
+        ok: true,
+        msg: "category not found",
+      });
+    }
+    const existResource = await Resource.findOne({
+      name: { $regex: name, $options: "i" },
+    });
     if (existResource) {
       return res.status(200).json({
         ok: true,
@@ -14,6 +23,8 @@ const createResource = async (req = request, res = response) => {
     }
     const newResource = new Resource({ ...req.body });
     const resourceCreated = await newResource.save();
+    existCategory.resources.push(resourceCreated._id);
+    await existCategory.save();
     res.status(201).json({
       ok: true,
       resource: resourceCreated,
