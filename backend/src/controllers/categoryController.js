@@ -29,6 +29,29 @@ const createCategory = async (req = request, res = response) => {
   }
 };
 
+const getCategories = async (req = request, res = response) => {
+  try {
+    const categories = await Category.find(
+      {},
+      {
+        resources: { $slice: 4 },
+      }
+    ).populate({ path: "resources", select: "-__v -category" });
+
+    res.status(200).json({
+      ok: true,
+      categories,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: "Something went wrong, try again",
+    });
+  }
+};
+
 module.exports = {
   createCategory,
+  getCategories,
 };
