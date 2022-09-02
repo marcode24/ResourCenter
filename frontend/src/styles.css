@@ -1,1 +1,57 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+*:focus {
+  outline: none;
+}
+
+:root {
+  --bg-color-1: #232946;
+  --bg-color-2: #fffffe;
+  --bg-color-3: #b8c1ec;
+  --bg-color-4: #b8c1ec77;
+  --bg-hover-1: #b8c1ec77;
+  --bg-hover-2: #eebbc377;
+  --bg-scroll-track: #f4faff;
+  --bg-scroll-thumb: #a5a5a5;
+  --font-color-1: #000;
+  --font-color-2: #ffe;
+  --font-color-3: #ff94cc;
+  --font-color-4: #4700d8;
+  --font-color-5: #666666;
+}
+
+body {
+  background: var(--bg-color-2);
+}
+
+/* Main scroll styles */
+
+::-webkit-scrollbar {
+  width: 7px;
+  background-color: var(--bg-color-track);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--bg-color-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--bg-scroll-thumb);
+  border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bg-scroll-thumb);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--bg-scroll-thumb);
+}
