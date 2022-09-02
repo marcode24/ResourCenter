@@ -55,3 +55,15 @@ body {
 ::-webkit-scrollbar-thumb:active {
   background: var(--bg-scroll-thumb);
 }
+
+.main-wrapper {
+  display: grid;
+  grid-template-columns: auto 300px;
+  gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .main-wrapper {
+    grid-template-columns: 100%;
+  }
+}

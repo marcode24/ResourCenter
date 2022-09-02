@@ -8,6 +8,11 @@ const routes: Routes = [
     component: FeaturesComponent,
     loadChildren: () => import('./home/home.routing').then(m => m.HomeRoutingModule),
   },
+  {
+    path: 'resource',
+    component: FeaturesComponent,
+    loadChildren: () => import('./resource/resource.routing').then(m => m.ResourceRoutingModule),
+  }
 ];
 
 @NgModule({

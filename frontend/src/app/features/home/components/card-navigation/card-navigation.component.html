@@ -1,13 +1,5 @@
 <div class="card-navigation">
   <div class="items">
-    <a href="" class="item">Programming Languages</a>
-    <a href="" class="item">Design</a>
-    <a href="" class="item">Images</a>
-    <a href="" class="item">Programming Languages</a>
-    <a href="" class="item">Design</a>
-    <a href="" class="item">Images</a>
-    <a href="" class="item">Programming Languages</a>
-    <a href="" class="item">Design</a>
-    <a href="" class="item">Images</a>
+    <a [href]="'#'+title" class="item" *ngFor="let title of titles">{{title}}</a>
   </div>
 </div>
