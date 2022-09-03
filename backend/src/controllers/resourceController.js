@@ -68,7 +68,7 @@ const getResources = async (req = request, res = response) => {
     const resources = await Resource.find({}, "", {
       limit,
       skip,
-    });
+    }).populate({ path: "category", select: "name" });
     res.status(200).json({
       ok: true,
       resources,
