@@ -16,8 +16,7 @@
               alt="prev-image">
           </picture>
           <div class="card-content">
-            <a class="card-title">{{resource.name}}
-              <i class="fa fa-chevron-right"></i>
+            <a [routerLink]="['/resource', resource._id]" class="card-title">{{resource.name}}
             </a>
           </div>
         </div>
@@ -28,7 +27,7 @@
   <div class="navigation">
     <div class="top">
       <app-card-navigation [titles]="titles"></app-card-navigation>
-      <app-card-tips></app-card-tips>
+      <app-card-tips [websites]="websites" *ngIf="websites"></app-card-tips>
     </div>
   </div>
 </div>

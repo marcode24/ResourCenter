@@ -1,49 +1,37 @@
-<div class="main-wrapper">
-  <div class="resource">
-    <div class="top">
-      <span class="title">Typescript</span>
-      <select name="" id="">
-        <option value="">Websites</option>
-        <option value="">Tips</option>
-        <option value="">Roadmaps</option>
-      </select>
+<div class="resource" *ngIf="resource && websites">
+  <div class="top">
+    <div class="title-wrapper">
+      <span class="title">{{resource.name}}</span>
+      <a [href]="resource.link" target="__blank">view oficial site</a>
     </div>
+    <picture>
+      <img [src]="resource.image" alt="resource-image">
+    </picture>
+  </div>
+  <div class="main-wrapper">
     <div class="cards">
-      <div class="card-resource">
+      <div class="card-resource" *ngFor="let website of websites">
         <picture>
           <img
             src="https://images.unsplash.com/photo-1657664072464-e525da1d426e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
             alt="prev-image">
         </picture>
         <div class="card-content">
-          <a class="card-title">MDN</a>
+          <a class="card-title">{{website.name}}</a>
           <div class="rating">
-            <input type="radio" name="resource-name">
-            <input type="radio" name="resource-name">
-            <input type="radio" name="resource-name">
-            <input type="radio" name="resource-name">
-            <input type="radio" name="resource-name">
-          </div>
-        </div>
-      </div>
-      <div class="card-resource">
-        <picture>
-          <img
-            src="https://images.unsplash.com/photo-1662122233965-dd4c5a4066bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-            alt="prev-image">
-        </picture>
-        <div class="card-content">
-          <a class="card-title">MDN</a>
-          <div class="rating">
-            <input type="radio" name="resource-name-1">
-            <input type="radio" name="resource-name-1">
-            <input type="radio" name="resource-name-1">
-            <input type="radio" name="resource-name-1">
-            <input type="radio" name="resource-name-1">
+            <input type="radio" [name]="website.name.substring(0, 10)">
+            <input type="radio" [name]="website.name.substring(0, 10)">
+            <input type="radio" [name]="website.name.substring(0, 10)">
+            <input type="radio" [name]="website.name.substring(0, 10)">
+            <input type="radio" [name]="website.name.substring(0, 10)">
           </div>
         </div>
       </div>
     </div>
+    <div class="navigation">
+      <div class="options">
+        <app-card-resources [resources]="resources" *ngIf="resources"></app-card-resources>
+      </div>
+    </div>
   </div>
-  <div class="options"></div>
 </div>

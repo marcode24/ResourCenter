@@ -38,6 +38,7 @@
   align-items: center;
   justify-content: center;
   min-width: 100px;
+  gap: 5px;
 }
 
 .cards {
@@ -53,7 +54,7 @@
   position: relative;
   padding: 1rem;
   background: var(--bg-color-2);
-  border-radius: 2rem;
+  border-radius: 1.4rem;
   min-height: 200px;
   -webkit-transition: 0.33s ease;
   -webkit-transform: scale(1);
@@ -84,7 +85,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 2rem;
+  border-radius: 1.4rem;
 }
 
 .card picture img {

@@ -5,7 +5,7 @@ import { ResourceComponent } from "./pages/resource/resource.component";
 
 const childRoutes: Routes = [
   {
-    path: '',
+    path: ':resourceId',
     component: ResourceComponent,
   },
 ];

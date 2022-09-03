@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Website } from '@models/website.model';
 
 @Component({
   selector: 'app-card-tips',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardTipsComponent implements OnInit {
 
+  @Input() websites: Website[]
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.websites);
   }
 
 }

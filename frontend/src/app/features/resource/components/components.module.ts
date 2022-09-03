@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { HomeComponent } from './pages/home/home.component';
-
-import { ComponentsModule } from './components/components.module';
+import { CardResourcesComponent } from './card-resources/card-resources.component';
 
 @NgModule({
   declarations: [
-    HomeComponent
+    CardResourcesComponent
   ],
   imports: [
     CommonModule,
-    ComponentsModule,
     RouterModule
+  ],
+  exports: [
+    CardResourcesComponent
   ]
 })
-export class HomeModule { }
+export class ComponentsModule { }

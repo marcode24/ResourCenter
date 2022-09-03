@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ResourceComponent } from './pages/resource/resource.component';
+import { ResourceComponent } from './resource.component';
 
+import { ComponentsModule } from '../../components/components.module';
 
 
 @NgModule({
@@ -9,7 +10,8 @@ import { ResourceComponent } from './pages/resource/resource.component';
     ResourceComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ComponentsModule
   ]
 })
 export class ResourceModule { }
