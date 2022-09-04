@@ -120,44 +120,6 @@
   cursor: pointer;
 }
 
-.rating {
-  position: relative;
-  display: flex;
-  margin: 5px 0;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.rating input {
-  position: relative;
-  width: 28px;
-  height: 28px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  appearance: none;
-  overflow: hidden;
-}
-
-.rating input::before {
-  content: "\f005";
-  position: absolute;
-  font-family: fontAwesome;
-  font-size: 20px;
-  position: absolute;
-  color: #fffffe;
-  transition: 0.4s;
-}
-
-.rating input:hover ~ input::before,
-.rating input:hover::before,
-.rating input:checked ~ input::before,
-.rating input:checked::before {
-  color: var(--font-color-3);
-}
-
 .navigation {
   opacity: 1;
 }

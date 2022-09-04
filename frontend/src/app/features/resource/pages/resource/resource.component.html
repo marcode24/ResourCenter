@@ -17,14 +17,8 @@
             alt="prev-image">
         </picture>
         <div class="card-content">
-          <a class="card-title">{{website.name}}</a>
-          <div class="rating">
-            <input type="radio" [name]="website.name.substring(0, 10)">
-            <input type="radio" [name]="website.name.substring(0, 10)">
-            <input type="radio" [name]="website.name.substring(0, 10)">
-            <input type="radio" [name]="website.name.substring(0, 10)">
-            <input type="radio" [name]="website.name.substring(0, 10)">
-          </div>
+          <a [routerLink]="['/website', website._id]" class="card-title">{{website.name}}</a>
+          <app-rating [name]="website.name"></app-rating>
         </div>
       </div>
     </div>

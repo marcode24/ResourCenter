@@ -1,0 +1,33 @@
+.comment {
+  padding: 0.6rem 0;
+}
+
+.comment .user {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.comment .user img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.comment .user .username {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.comment .stamps {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.comment p {
+  font-size: 17px;
+  font-weight: 300;
+}

@@ -12,6 +12,11 @@ const routes: Routes = [
     path: 'resource',
     component: FeaturesComponent,
     loadChildren: () => import('./resource/resource.routing').then(m => m.ResourceRoutingModule),
+  },
+  {
+    path: 'website',
+    component: FeaturesComponent,
+    loadChildren: () => import('./website/website.routing').then(m => m.WebsiteRoutingModule),
   }
 ];
 

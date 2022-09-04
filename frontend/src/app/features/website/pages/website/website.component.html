@@ -1,0 +1,27 @@
+<div class="website">
+  <div class="card-website" *ngIf="!isLoading && website">
+    <picture>
+      <img *ngIf="website.image" [src]="website.image" alt="image-top">
+    </picture>
+    <div class="card-body">
+      <span class="title">{{website.name}}</span>
+      <a [href]="website.link" target="_blank" class="original">view original</a>
+      <div class="details">
+        <app-rating [bgLight]="true" [name]="website.name"></app-rating>
+        <div class="options">
+          <span class="resource">{{website.resource.name}}</span> &bull;
+          <span class="category">{{website.resource.category.name}}</span>
+        </div>
+      </div>
+      <p class="content" *ngIf="website.description && website.description.length > 0">
+        {{ website.description }}
+      </p>
+    </div>
+  </div>
+
+  <section class="comments">
+    <span>Comments section</span>
+    <app-comment></app-comment>
+    <app-comment></app-comment>
+  </section>
+</div>

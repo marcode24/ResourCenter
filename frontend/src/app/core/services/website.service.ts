@@ -27,4 +27,9 @@ export class WebsiteService {
     return this.http.get<IResponseWebsite>(url).pipe(map(resp => resp.websites));
   }
 
+  getWebsite(websiteId: string): Observable<Website> {
+    const url = `${base_url}/website/${websiteId}`;
+    return this.http.get<IResponseWebsite>(url).pipe(map(resp => resp.website));
+  }
+
 }

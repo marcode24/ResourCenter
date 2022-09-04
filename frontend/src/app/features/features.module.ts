@@ -5,9 +5,10 @@ import { RouterModule } from '@angular/router';
 import { ComponentsModule } from '@components/components.module';
 
 import { HomeModule } from './home/home.module';
-import { ResourceModule } from './resource/pages/resource/resource.module';
+import { ResourceModule } from './resource/resource.module';
 
 import { FeaturesComponent } from './features.component';
+import { WebsiteModule } from './website/website.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FeaturesComponent } from './features.component';
     RouterModule,
     ComponentsModule,
     HomeModule,
-    ResourceModule
+    ResourceModule,
+    WebsiteModule
   ]
 })
 export class FeaturesModule { }
