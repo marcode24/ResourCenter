@@ -70,8 +70,39 @@ const getWebsitesByResource = async (req = request, res = response) => {
   }
 };
 
+const getWebsiteById = async (req = request, res = response) => {
+  try {
+    const websiteID = req.params.id;
+    const websiteDB = await Website.findById(websiteID).populate({
+      path: "resource",
+      select: "name category",
+      populate: {
+        path: "category",
+        select: "name",
+      },
+    });
+    if (!websiteDB) {
+      return res.status(404).json({
+        ok: true,
+        msg: "Website not found",
+      });
+    }
+    res.status(200).json({
+      ok: true,
+      website: websiteDB,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: "Something went wrong, try again",
+    });
+  }
+};
+
 module.exports = {
   createWebsite,
   getWebsites,
   getWebsitesByResource,
+  getWebsiteById,
 };
