@@ -12,13 +12,11 @@
     <div class="cards">
       <div class="card-resource" *ngFor="let website of websites">
         <picture>
-          <img
-            src="https://images.unsplash.com/photo-1657664072464-e525da1d426e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
-            alt="prev-image">
+          <img [src]="website.image" loading="lazy" alt="prev-image">
         </picture>
         <div class="card-content">
           <a [routerLink]="['/website', website._id]" class="card-title">{{website.name}}</a>
-          <app-rating [name]="website.name"></app-rating>
+          <app-rating [editable]="true" [name]="website.name"></app-rating>
         </div>
       </div>
     </div>

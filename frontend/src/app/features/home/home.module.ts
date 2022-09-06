@@ -5,10 +5,12 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 
 import { ComponentsModule } from './components/components.module';
+import { CategoryComponent } from './pages/category/category.component';
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    CategoryComponent
   ],
   imports: [
     CommonModule,

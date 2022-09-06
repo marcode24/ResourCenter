@@ -3,7 +3,7 @@
     <section [id]="category.name" class="resource" *ngFor="let category of categories">
       <div class="title-wrapper">
         <span class="title-section">{{ category.name }}</span>
-        <a href="" class="more">
+        <a [routerLink]="['/category', category._id]" class="more">
           See all
           <i class="fa fa-arrow-right"></i>
         </a>
@@ -11,9 +11,7 @@
       <div class="cards">
         <div class="card" *ngFor="let resource of category.resources">
           <picture>
-            <img
-              src="https://images.unsplash.com/photo-1657664072464-e525da1d426e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
-              alt="prev-image">
+            <img [src]="resource.image" alt="prev-image" loading="lazy">
           </picture>
           <div class="card-content">
             <a [routerLink]="['/resource', resource._id]" class="card-title">{{resource.name}}

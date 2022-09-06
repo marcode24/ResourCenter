@@ -1,0 +1,13 @@
+.categories {
+  padding: 0.8rem 1rem;
+}
+
+.cards {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 480px) {
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
 
 import { Category } from '@models/category.model';
 import { Website } from '@models/website.model';
 
 import { CategoryService } from '@services/category.service';
 import { WebsiteService } from '@services/website.service';
-import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit {
         this.categories = categories;
         this.categories.forEach(el => this.titles.push(el.name));
         this.websites = websites;
-        console.log(this.websites);
       },
     })
   }

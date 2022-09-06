@@ -1,0 +1,164 @@
+header {
+  transition: all 0.5s;
+  z-index: 999;
+  padding: 0.8rem 0;
+  position: sticky;
+  top: 0;
+  height: 4.5rem;
+  width: 100%;
+  border-bottom: 1px solid #b8c1ec77;
+  background: var(--bg-color-2);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
+}
+
+header .header-wrapper {
+  height: 100%;
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .header-wrapper .logo {
+  display: flex;
+  align-items: center;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+header .header-wrapper .logo .title-1 {
+  color: var(--font-color-4);
+}
+
+header .header-wrapper .logo .title-2 {
+  color: var(--font-color-1);
+}
+
+header .header-wrapper .options {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 7px;
+}
+
+header .header-wrapper .options .menu {
+  gap: 7px;
+  display: flex;
+  align-items: center;
+}
+
+header .header-wrapper .options .icon {
+  font-size: 28px;
+  display: none;
+}
+
+header .header-wrapper .options .bars {
+  display: none;
+  opacity: 0;
+}
+
+.menu-sidenav {
+  display: none;
+  height: 100%;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  box-shadow: -6px 2px 6px rgb(0 0 0 / 10%);
+  background: var(--bg-color-2);
+  overflow-x: hidden;
+  transition: 0.3s ease-in;
+  padding: 0.8rem 1rem;
+}
+
+.menu-sidenav.open {
+  min-width: 60%;
+  display: block;
+}
+
+.menu-sidenav .items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.menu-sidenav .items .icon {
+  align-self: flex-end;
+}
+
+.menu-sidenav .items a.btn {
+  width: 100%;
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  background-color: #111;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  height: 30px;
+  width: 55px;
+}
+
+.label .ball {
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  height: 26px;
+  width: 26px;
+  transform: translateX(0px);
+  transition: transform 0.25s ease;
+}
+
+.checkbox:checked + .label .ball {
+  transform: translateX(24px);
+}
+
+.fa-moon {
+  color: #f1c40f;
+}
+
+.fa-sun {
+  color: #f39c12;
+}
+
+@media (max-width: 768px) {
+  header .header-wrapper .logo {
+    font-size: 38px;
+  }
+
+  header .header-wrapper .options .menu {
+    display: none;
+  }
+
+  header .header-wrapper .options .icon {
+    opacity: 1;
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .menu-sidenav.open {
+    display: none;
+    width: 0%;
+  }
+}
+
+@media (max-width: 480px) {
+  header .header-wrapper .logo {
+    font-size: 32px;
+  }
+}

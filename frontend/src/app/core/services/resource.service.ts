@@ -22,8 +22,9 @@ export class ResourceService {
     return this.http.get<IResponseResource>(url).pipe(map(resp => resp.resource));
   }
 
-  getResources(limit = 10, skip = 0): Observable<Resource[]> {
-    const url = `${base_url}/resource?limit=${limit}&skip=${skip}`;
+  getResources(limit = 10, skip = 0, categoryId?: string): Observable<Resource[]> {
+    let url = `${base_url}/resource?limit=${limit}&skip=${skip}`;
+    if(categoryId && categoryId.length === 24) url += `&category=${categoryId}`;
     return this.http.get<IResponseResource>(url).pipe(map(resp => resp.resources));
   }
 

@@ -21,4 +21,9 @@ export class CategoryService {
     return this.http.get<IResponseCategory>(url).pipe(map((resp => resp.categories)));
   }
 
+  getCategory(categoryID: string): Observable<Category> {
+    const url = `${base_url}/category/${categoryID}`;
+    return this.http.get<IResponseCategory>(url).pipe(map(resp => resp.category));
+  }
+
 }
