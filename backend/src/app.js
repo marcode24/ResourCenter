@@ -11,5 +11,6 @@ app.use(express.json());
 app.use("/api/resource", require("./routes/resourceRoute"));
 app.use("/api/website", require("./routes/websiteRoute"));
 app.use("/api/category", require("./routes/categoryRoute"));
+app.use("/api/user", require("./routes/userRoute"));
 
 module.exports = app;
