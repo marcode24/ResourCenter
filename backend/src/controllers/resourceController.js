@@ -4,21 +4,12 @@ const Resource = require("../models/resourceModel");
 
 const createResource = async (req = request, res = response) => {
   try {
-    const { name, category } = req.body;
+    const { category } = req.body;
     const existCategory = await categoryModel.findById(category);
     if (!existCategory) {
       return res.status(404).json({
         ok: true,
         msg: "category not found",
-      });
-    }
-    const existResource = await Resource.findOne({
-      name: { $regex: name, $options: "i" },
-    });
-    if (existResource) {
-      return res.status(200).json({
-        ok: true,
-        msg: "One resource has a similar name",
       });
     }
     const newResource = new Resource({ ...req.body });
@@ -64,8 +55,9 @@ const updateResource = async (req = request, res = response) => {
 
 const getResources = async (req = request, res = response) => {
   try {
-    const { skip = 0, limit = 10 } = req.query;
-    const resources = await Resource.find({}, "", {
+    const { skip = 0, limit = 10, category } = req.query;
+    const finderResource = category ? { category } : {};
+    const resources = await Resource.find(finderResource, "", {
       limit,
       skip,
     }).populate({ path: "category", select: "name" });

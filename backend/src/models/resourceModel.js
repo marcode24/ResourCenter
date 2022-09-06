@@ -7,9 +7,11 @@ const resourceSchema = Schema({
   },
   description: {
     type: String,
+    default: null,
   },
   image: {
     type: String,
+    default: null,
   },
   link: {
     type: String,

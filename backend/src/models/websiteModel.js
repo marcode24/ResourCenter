@@ -12,6 +12,7 @@ const websiteSchema = Schema({
   },
   description: {
     type: String,
+    default: null,
   },
   image: {
     type: String,
@@ -27,7 +28,8 @@ const websiteSchema = Schema({
   },
   comments: [
     {
-      type: String,
+      type: SchemaTypes.ObjectId,
+      ref: "comment",
       default: [],
     },
   ],
