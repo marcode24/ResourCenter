@@ -28,18 +28,11 @@ const userSchema = Schema({
     type: Boolean,
     default: false,
   },
-  websitesStarried: [
+  websitesCommented: [
     {
-      stars: {
-        type: Number,
-        default: 0,
-        required: true,
-      },
-      website: {
-        type: SchemaTypes.ObjectId,
-        ref: "website",
-        required: true,
-      },
+      type: SchemaTypes.ObjectId,
+      ref: "website",
+      required: true,
     },
   ],
 });

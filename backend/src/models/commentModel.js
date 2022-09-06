@@ -10,6 +10,19 @@ const commentSchema = Schema({
     default: new Date(),
     required: true,
   },
+  edited: {
+    type: Boolean,
+    default: false,
+  },
+  stars: {
+    type: Number,
+    required: true,
+  },
+  website: {
+    type: SchemaTypes.ObjectId,
+    ref: "website",
+    required: true,
+  },
   user: {
     type: SchemaTypes.ObjectId,
     ref: "user",

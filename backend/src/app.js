@@ -12,5 +12,6 @@ app.use("/api/resource", require("./routes/resourceRoute"));
 app.use("/api/website", require("./routes/websiteRoute"));
 app.use("/api/category", require("./routes/categoryRoute"));
 app.use("/api/user", require("./routes/userRoute"));
+app.use("/api/comment", require("./routes/commentRoute"));
 
 module.exports = app;
