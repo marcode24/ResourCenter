@@ -48,6 +48,38 @@ const createComment = async (req = request, res = response) => {
   }
 };
 
+const updateComment = async (req = request, res = response) => {
+  try {
+    const { id: commentId } = req.params;
+    const { id: userId } = req;
+    const commentDB = await Comment.findOne({ _id: commentId, user: userId });
+    if (!commentDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: "comment not found",
+      });
+    }
+
+    // update comment
+    const { content } = req.body;
+    commentDB.edited = true;
+    commentDB.content = content;
+    await commentDB.save();
+
+    res.status(200).json({
+      ok: true,
+      msg: "comment updated correctly",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: "Something went wrong",
+    });
+  }
+};
+
 module.exports = {
   createComment,
+  updateComment,
 };
