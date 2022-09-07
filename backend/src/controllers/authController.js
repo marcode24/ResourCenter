@@ -39,6 +39,18 @@ const login = async (req, res = response) => {
   }
 };
 
+const renewToken = async (req, res = response) => {
+  const id = req.id;
+  const token = await generateJWT(id);
+  const user = await User.findById(id, "-password");
+  res.json({
+    ok: true,
+    token,
+    user,
+  });
+};
+
 module.exports = {
   login,
+  renewToken,
 };
