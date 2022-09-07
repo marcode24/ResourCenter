@@ -34,6 +34,33 @@ const createUser = async (req = request, res = response) => {
   }
 };
 
+const changeTheme = async (req = request, res = response) => {
+  try {
+    const { id: userId } = req;
+    const { darkMode = false } = req.body;
+    const userDB = await User.findById(userId);
+    if (!userDB) {
+      return res.json({
+        ok: false,
+        msg: "user not found, try again",
+      });
+    }
+    userDB.darkMode = darkMode;
+    await userDB.save();
+    res.status(200).json({
+      ok: true,
+      msg: "theme updated correctly",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      ok: false,
+      msg: "Something went wrong",
+    });
+  }
+};
+
 module.exports = {
   createUser,
+  changeTheme,
 };
