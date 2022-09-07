@@ -8,6 +8,7 @@ app.use(cors());
 
 app.use(express.json());
 
+app.use("/api/auth", require("./routes/authRoute"));
 app.use("/api/resource", require("./routes/resourceRoute"));
 app.use("/api/website", require("./routes/websiteRoute"));
 app.use("/api/category", require("./routes/categoryRoute"));

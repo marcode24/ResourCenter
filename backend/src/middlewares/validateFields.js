@@ -46,7 +46,19 @@ const validateCreateComment = (req = request, res = response, next) => {
   next();
 };
 
+const validateLogin = (req = request, res = response, next) => {
+  const { email = null, password = null } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({
+      ok: false,
+      msg: "Must provide email and password",
+    });
+  }
+  next();
+};
+
 module.exports = {
   validateCreateUser,
   validateCreateComment,
+  validateLogin,
 };
