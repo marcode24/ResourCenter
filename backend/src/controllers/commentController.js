@@ -79,7 +79,30 @@ const updateComment = async (req = request, res = response) => {
   }
 };
 
+const getComments = async (req = request, res = response) => {
+  try {
+    const { skip = 0, limit = 10 } = req.query;
+    const { id: websiteId } = req.params;
+    const comments = await Comment.find({ website: websiteId }, "", {
+      limit,
+      skip,
+      sort: { created: -1 },
+    }).populate({ path: "user", select: "email name lastName image" });
+    res.status(200).json({
+      ok: true,
+      comments,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: "Something went wrong",
+    });
+  }
+};
+
 module.exports = {
   createComment,
   updateComment,
+  getComments,
 };
