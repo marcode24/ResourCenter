@@ -28,6 +28,7 @@
       "@interfaces/*": [ "app/core/interfaces/*" ],
       "@models/*": [ "app/core/models/*" ],
       "@services/*": [ "app/core/services/*" ],
+      "@utils/*": [ "app/core/utils/*" ],
       "@shared/*": [ "app/shared/*" ],
     }
   },

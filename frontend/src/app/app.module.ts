@@ -18,7 +18,7 @@ import { FeaturesModule } from './features/features.module';
     RouterModule,
     FeaturesModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

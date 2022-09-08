@@ -7,7 +7,8 @@
       <span class="title">{{website.name}}</span>
       <a [href]="website.link" target="_blank" class="original">view original</a>
       <div class="details">
-        <app-rating [bgLight]="true" [name]="website.name"></app-rating>
+        <ngx-star-rating [id]="website.name" [(ngModel)]="website.stars" [disabled]="true"></ngx-star-rating>
+        <!-- <app-rating [bgLight]="true" [name]="website.name"></app-rating> -->
         <div class="options">
           <span class="resource">{{website.resource.name}}</span> &bull;
           <span class="category">{{website.resource.category.name}}</span>

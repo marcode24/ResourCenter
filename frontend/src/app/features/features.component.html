@@ -1,6 +1,10 @@
-<app-header></app-header>
-<div class="wrapper">
-  <div class="container">
-    <router-outlet></router-outlet>
+<div *ngIf="!isLoading">
+  <app-header></app-header>
+  <div class="wrapper">
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
+
+<app-auth></app-auth>

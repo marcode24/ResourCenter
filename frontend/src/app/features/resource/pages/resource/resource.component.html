@@ -3,6 +3,7 @@
     <div class="title-wrapper">
       <span class="title">{{resource.name}}</span>
       <a [href]="resource.link" target="__blank">view oficial site</a>
+      <p class="description">{{ resource.description }}</p>
     </div>
     <picture>
       <img [src]="resource.image" alt="resource-image">
@@ -16,7 +17,7 @@
         </picture>
         <div class="card-content">
           <a [routerLink]="['/website', website._id]" class="card-title">{{website.name}}</a>
-          <app-rating [editable]="true" [name]="website.name"></app-rating>
+          <ngx-star-rating [id]="website.name" [(ngModel)]="website.stars" [disabled]="true"></ngx-star-rating>
         </div>
       </div>
     </div>

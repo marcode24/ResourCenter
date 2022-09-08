@@ -1,5 +1,6 @@
 import { Category } from "@models/category.model";
 import { Resource } from "@models/resource.model";
+import { User } from "@models/user.model";
 import { Website } from "@models/website.model";
 
 export interface IResponseCategory {
@@ -22,3 +23,9 @@ export interface IResponseWebsite {
   website: Website,
   msg?: string,
 }
+
+export interface IResponseLogin {
+  ok: boolean,
+  token: string,
+  user: User,
+};

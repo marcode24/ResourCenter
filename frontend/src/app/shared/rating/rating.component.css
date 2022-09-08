@@ -2,8 +2,8 @@
   position: relative;
   display: flex;
   margin: 5px 0;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
+  /* flex-direction: row-reverse; */
+  /* justify-content: flex-end; */
   align-items: center;
 }
 
@@ -37,9 +37,15 @@
   color: #a5a5a5;
 }
 
+.rating input::before:disabled:checked ~ input::before:disabled:checked,
+/* .rating input:disabled:checked::before ~ input::before, */
+.rating input:disabled:checked::before {
+  color: #9147ff;
+}
+
 .rating input:not([disabled]):hover ~ input::before,
 .rating input:not([disabled]):hover::before,
 .rating input:not([disabled]):checked ~ input::before,
 .rating input:not([disabled]):checked::before {
-  color: var(--font-color-3);
+  color: #9147ff;
 }

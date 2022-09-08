@@ -9,6 +9,7 @@ import { ResourceModule } from './resource/resource.module';
 
 import { FeaturesComponent } from './features.component';
 import { WebsiteModule } from './website/website.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { WebsiteModule } from './website/website.module';
     ComponentsModule,
     HomeModule,
     ResourceModule,
-    WebsiteModule
+    WebsiteModule,
+    AuthModule
   ]
 })
 export class FeaturesModule { }

@@ -34,6 +34,7 @@
   display: flex;
   gap: 5px;
   flex-direction: column;
+  color: var(--font-color-1);
 }
 
 .card-website .card-body .title {
@@ -59,6 +60,7 @@
 }
 
 .details .options {
+  margin-top: 0.7rem;
   color: var(--font-color-5);
 }
 
@@ -67,6 +69,7 @@
 }
 
 .comments span {
-  font-size: 24px;
+  color: var(--font-color-1);
+  font-size: 28px;
   font-weight: 600;
 }

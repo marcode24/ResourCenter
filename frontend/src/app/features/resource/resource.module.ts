@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { NgxStarRatingModule } from 'ngx-star-rating';
 
 import { ResourceComponent } from './pages/resource/resource.component';
 
@@ -15,7 +17,9 @@ import { SharedModule } from '@shared/shared.module';
     CommonModule,
     RouterModule,
     ComponentsModule,
-    SharedModule
+    SharedModule,
+    NgxStarRatingModule,
+    FormsModule
   ]
 })
 export class ResourceModule { }

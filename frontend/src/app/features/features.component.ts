@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '@models/user.model';
+import { AuthService } from '@services/auth.service';
+import { SettingService } from '@services/setting.service';
 
 @Component({
   selector: 'app-features',
@@ -7,7 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeaturesComponent implements OnInit {
 
-  constructor() { }
+  public isLoading: boolean = true;
+
+  constructor(
+    private authService: AuthService,
+    private settingService: SettingService ) {
+    authService.validateToken().subscribe(() => {
+      const userActive: User = authService.getUserActive;
+      if(userActive) {
+        settingService.setTheme(userActive.darkMode ? 'dark' : 'light');
+      }
+      this.isLoading = false;
+    });
+  }
 
   ngOnInit(): void {
   }

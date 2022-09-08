@@ -1,7 +1,14 @@
 <div class="rating" *ngIf="name">
-  <input type="radio" [class.dark]="bgLight" [name]="name" [disabled]="!editable">
-  <input type="radio" [class.dark]="bgLight" [name]="name" [disabled]="!editable">
-  <input type="radio" [class.dark]="bgLight" [name]="name" [disabled]="!editable">
-  <input type="radio" [class.dark]="bgLight" [name]="name" [disabled]="!editable">
-  <input type="radio" [class.dark]="bgLight" [name]="name" [disabled]="!editable">
+  <!-- <input type="radio" [value]="starItem" [attr.checked]="true" *ngFor="let starItem of starsArray; let index"
+    [class.dark]="bgLight" [name]="name" [disabled]="!editable"> -->
+  <input type="radio" [attr.checked]=true [value]="starsArray[0]" [class.dark]="bgLight" [name]="name"
+    [disabled]="!editable">
+  <input type="radio" [attr.checked]=true [value]="starsArray[1]" [class.dark]="bgLight" [name]="name"
+    [disabled]="!editable">
+  <input type="radio" [attr.checked]=true [value]="starsArray[2]" [class.dark]="bgLight" [name]="name"
+    [disabled]="!editable">
+  <input type="radio" [attr.checked]=true [value]="starsArray[3]" [class.dark]="bgLight" [name]="name"
+    [disabled]="!editable">
+  <input type="radio" [attr.checked]=true [value]="starsArray[4]" [class.dark]="bgLight" [name]="name"
+    [disabled]="!editable">
 </div>
