@@ -140,6 +140,7 @@ body.modal-open {
   display: grid;
   grid-template-columns: auto 300px;
   gap: 0.5rem;
+  padding: 1rem 0;
 }
 
 .title-wrapper {
