@@ -7,7 +7,6 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
 import { ResourceComponent } from './pages/resource/resource.component';
 
 import { ComponentsModule } from './components/components.module';
-import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +16,6 @@ import { SharedModule } from '@shared/shared.module';
     CommonModule,
     RouterModule,
     ComponentsModule,
-    SharedModule,
     NgxStarRatingModule,
     FormsModule
   ]

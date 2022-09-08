@@ -5,7 +5,6 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
 
 import { CommentComponent } from './comment/comment.component';
 
-import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +12,6 @@ import { SharedModule } from '@shared/shared.module';
   ],
   imports: [
     CommonModule,
-    SharedModule,
     NgxStarRatingModule,
     FormsModule
   ],

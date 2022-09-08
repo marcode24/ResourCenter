@@ -1,17 +1,12 @@
 <div class="comment">
   <div class="user">
-    <img
-      src="https://images.unsplash.com/photo-1614436163996-25cee5f54290?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=742&q=80"
-      alt="user-image">
-    <span class="username">Username example</span>
+    <img [src]="comment.user.image" alt="user-image">
+    <span class="username">{{getName}}</span>
   </div>
   <div class="stamps">
-    <ngx-star-rating [id]="'das'" [disabled]="false"></ngx-star-rating>
-    <span class="date">{{'2022-09-04T20:02:54.621Z' | date: 'dd/MM/YYYY'}}</span>
+    <ngx-star-rating [id]="getName.concat(comment.created.toString())" [disabled]="true" [(ngModel)]="comment.stars">
+    </ngx-star-rating>
+    <span class="date">{{comment.created | date: 'dd/MM/YYYY'}}</span>
   </div>
-  <p>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat consequatur perspiciatis hic. Commodi deserunt
-    voluptatibus expedita quo suscipit hic? Cumque, animi rerum sunt laboriosam a porro voluptatibus repellendus
-    exercitationem earum?
-  </p>
+  <p> {{ comment.content }} </p>
 </div>
