@@ -41,6 +41,7 @@ export class AuthService {
   }
 
   showModalAuth(to: 'login'|'register'|'init'): void {
+    console.log({to});
     const isAuth: boolean = this.userActive ? true : false;
     this.isAuthenticatedEmitter.emit({ isAuth, to });
   }
@@ -97,5 +98,9 @@ export class AuthService {
     }
   }
 
+  commentBefore(websiteId: string): boolean  {
+    const exist = this.userActive?.websitesCommented?.find(el => el._id === websiteId);
+    return exist ? true : false;
+  }
 
 }

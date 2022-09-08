@@ -20,8 +20,9 @@
   </div>
 
   <section class="comments-section">
-    <span>Comments section</span>
-    <!-- build form comment -->
+    <app-comment-form *ngIf="website && !commentBefore" [website]="website._id!" (newComment)="createComment($event)">
+    </app-comment-form>
+    <span *ngIf="comments && comments.length > 0">Comments section</span>
     <div *ngIf="comments && comments.length > 0" class="comments">
       <app-comment *ngFor="let comment of comments" [comment]="comment"></app-comment>
     </div>

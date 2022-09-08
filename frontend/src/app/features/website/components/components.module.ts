@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { NgxStarRatingModule } from 'ngx-star-rating';
 
 import { CommentComponent } from './comment/comment.component';
+import { CommentFormComponent } from './comment-form/comment-form.component';
 
 
 @NgModule({
   declarations: [
-    CommentComponent
+    CommentComponent,
+    CommentFormComponent
   ],
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import { CommentComponent } from './comment/comment.component';
     FormsModule
   ],
   exports: [
-    CommentComponent
+    CommentComponent,
+    CommentFormComponent
   ]
 })
 export class ComponentsModule { }

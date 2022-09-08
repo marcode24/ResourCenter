@@ -253,6 +253,11 @@ ngx-star-rating {
   justify-content: flex-start;
 }
 
+.content label.star {
+  padding: 0 5px !important;
+  font-size: 40px !important;
+}
+
 label.star {
   padding: 0 5px !important;
   font-size: 22px !important;
