@@ -5,6 +5,7 @@ import { map, Observable } from 'rxjs';
 import { environment } from 'environments/environment';
 import { Website } from '@models/website.model';
 import { IResponseWebsite } from '@interfaces/response.interface';
+import { IParams } from '@interfaces/params.interface';
 
 const base_url = environment.base_url;
 
@@ -22,8 +23,11 @@ export class WebsiteService {
     return this.http.get<IResponseWebsite>(url).pipe(map(resp => resp.websites));
   }
 
-  getWebsitesByResource(resourceID: string, limit = 10, skip = 0): Observable<Website[]> {
-    const url = `${base_url}/website/resource/${resourceID}?limit=${limit}&skip=${skip}`;
+  getWebsitesByResource(resourceID: string, { limit = 10, skip = 0, search }: IParams): Observable<Website[]> {
+    let url = `${base_url}/website/resource/${resourceID}?limit=${limit}&skip=${skip}`;
+    if(search && search.trim().length > 0) {
+      url += `&search=${search}`;
+    }
     return this.http.get<IResponseWebsite>(url).pipe(map(resp => resp.websites));
   }
 
@@ -31,5 +35,6 @@ export class WebsiteService {
     const url = `${base_url}/website/${websiteId}`;
     return this.http.get<IResponseWebsite>(url).pipe(map(resp => resp.website));
   }
+
 
 }

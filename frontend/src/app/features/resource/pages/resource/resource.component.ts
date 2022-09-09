@@ -7,6 +7,7 @@ import { WebsiteService } from '@services/website.service';
 
 import { Website } from '@models/website.model';
 import { Resource } from '@models/resource.model';
+import { IParams } from '@interfaces/params.interface';
 
 @Component({
   selector: 'app-resource',
@@ -18,6 +19,12 @@ export class ResourceComponent implements OnInit {
   websites: Website[];
   resource: Resource;
   resources: Resource[];
+  private resourceId: string;
+
+  private params: IParams = {
+    limit: 10,
+    skip: 0,
+  }
 
   isLoading: boolean = true;
 
@@ -33,6 +40,7 @@ export class ResourceComponent implements OnInit {
   }
 
   loadData(resourceID: string): void {
+    this.resourceId = resourceID;
     forkJoin({
       resources: this.resourceService.getResources(7),
       resource: this.resourceService.getResource(resourceID),
@@ -51,7 +59,16 @@ export class ResourceComponent implements OnInit {
   }
 
   private getWebsites(resourceID: string): Observable<Website[]> {
-    return this.websiteService.getWebsitesByResource(resourceID);
+    return this.websiteService.getWebsitesByResource(resourceID, this.params);
+  }
+
+  searchWebsites(search: string) {
+    this.params.search = search;
+    this.getWebsites(this.resourceId).subscribe({
+      next: (websites) => {
+        this.websites = websites;
+      }
+    })
   }
 
 }

@@ -1,3 +1,9 @@
+.resources {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .resource,
 .navigation {
   padding: 0 1rem;

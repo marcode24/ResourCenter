@@ -23,6 +23,7 @@
     </div>
     <div class="navigation">
       <div class="options">
+        <app-search-input (search)="searchWebsites($event)"></app-search-input>
         <app-card-resources [resources]="resources" *ngIf="resources"></app-card-resources>
       </div>
     </div>

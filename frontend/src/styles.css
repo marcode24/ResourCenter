@@ -269,9 +269,19 @@ label.star::before {
   font-family: FontAwesome !important;
 }
 
-label.star:hover {
+input.star:not(:disabled) + label.star:hover {
   cursor: pointer;
   transform: rotate(0deg) scale(1.25) !important;
+}
+
+input.star:disabled + label.star:hover {
+  cursor: default !important;
+  transform: rotate(0deg) scale(1) !important;
+}
+
+input.star-5:checked ~ label.star::before {
+  text-shadow: inherit !important;
+  color: #fd4 !important;
 }
 
 /* form styles */
