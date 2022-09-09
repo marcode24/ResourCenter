@@ -26,7 +26,16 @@ const createComment = async (req = request, res = response) => {
       });
     }
     const newComment = new Comment({ user, stars, content, website });
-    const commentCreated = await newComment.save();
+    const commentCreated = await (
+      await newComment.save()
+    ).populate({
+      path: "user",
+      select: "-password",
+    });
+
+    // update user websites commented
+    userExist.websitesCommented.push(websiteExist._id);
+    await userExist.save();
 
     // update website stars
     const { error, stars: newStars } = await getNewStarried(website);

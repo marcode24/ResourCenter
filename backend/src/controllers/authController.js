@@ -23,7 +23,10 @@ const login = async (req, res = response) => {
     }
     const [token, userData] = await Promise.all([
       generateJWT(userExist.id),
-      User.findById(userExist.id, "-password"),
+      User.findById(userExist.id, "-password").populate({
+        path: "websitesCommented",
+        select: "name",
+      }),
     ]);
     return res.status(200).json({
       ok: true,
@@ -42,7 +45,10 @@ const login = async (req, res = response) => {
 const renewToken = async (req, res = response) => {
   const id = req.id;
   const token = await generateJWT(id);
-  const user = await User.findById(id, "-password");
+  const user = await User.findById(id, "-password").populate({
+    path: "websitesCommented",
+    select: "name",
+  });
   res.json({
     ok: true,
     token,

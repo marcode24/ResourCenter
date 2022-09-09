@@ -52,8 +52,13 @@ const getWebsites = async (req = request, res = response) => {
 const getWebsitesByResource = async (req = request, res = response) => {
   try {
     const { id: resourceID } = req.params;
-    const { skip = 0, limit = 10 } = req.query;
-    const websites = await Website.find({ resource: resourceID }, "", {
+    const { skip = 0, limit = 10, search: query = null } = req.query;
+    const searchParams = { resource: resourceID };
+    if (query && query.trim().length > 0) {
+      const regexQuery = new RegExp(query, "i");
+      searchParams["name"] = regexQuery;
+    }
+    const websites = await Website.find(searchParams, "", {
       limit,
       skip,
     });

@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/userModel");
+const Website = require("../models/websiteModel");
 const { generateJWT } = require("../utils/jwt");
 
 const createUser = async (req = request, res = response) => {
@@ -60,7 +61,55 @@ const changeTheme = async (req = request, res = response) => {
   }
 };
 
+const modifyPreferences = async (req = request, res = response) => {
+  const { id: userId } = req;
+  try {
+    const user = await User.findById(userId).populate({
+      path: "websitesSaved",
+      select: "_id name",
+    });
+    if (!user) {
+      return res.status(404).json({
+        ok: false,
+        msg: "user not found",
+      });
+    }
+    const { id: websiteId } = req.params;
+    const websiteFound = await Website.findById(websiteId);
+    if (!websiteFound) {
+      return res.status(404).json({
+        ok: false,
+        msg: "website not found",
+      });
+    }
+
+    const websiteSavedBefore = user.websitesSaved.find(
+      (website) => website._id.toString() === websiteId
+    );
+    if (websiteSavedBefore) {
+      user.websitesSaved = user.websitesSaved.filter(
+        (website) => website._id.toString() !== websiteId
+      );
+    } else {
+      user.websitesSaved.push(websiteId);
+    }
+    await user.save();
+
+    res.status(200).json({
+      msg: "preferece modified correctly",
+      ok: true,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      ok: false,
+      msg: "Something went wrong",
+    });
+  }
+};
+
 module.exports = {
   createUser,
   changeTheme,
+  modifyPreferences,
 };

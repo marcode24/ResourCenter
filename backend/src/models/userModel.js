@@ -28,11 +28,18 @@ const userSchema = Schema({
     type: Boolean,
     default: false,
   },
+  websitesSaved: [
+    {
+      type: SchemaTypes.ObjectId,
+      ref: "website",
+      default: [],
+    },
+  ],
   websitesCommented: [
     {
       type: SchemaTypes.ObjectId,
       ref: "website",
-      required: true,
+      default: [],
     },
   ],
 });
