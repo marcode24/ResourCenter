@@ -16,7 +16,7 @@
           <span class="username">{{getName}}</span>
         </div>
         <ul>
-          <li><a href="#"><i class="far fa-bookmark"></i> websites saved</a></li>
+          <li><a routerLink="/website/saved"><i class="far fa-bookmark"></i> websites saved</a></li>
           <li><a (click)="logOut()"><i class="fa fa-right-from-bracket"></i> log out</a></li>
         </ul>
       </div>
@@ -36,7 +36,7 @@
           <div class="auth-more" *ngIf="isAuthenticated">
             <img [src]="getImage" alt="image-user">
             <span class="username">{{ getName }}</span>
-            <a class="btn btn-primary btn-outline">websites saved </a>
+            <a routerLink="/website/saved" class="btn btn-primary btn-outline">websites saved </a>
             <a (click)="logOut()" class="btn btn-primary">log out</a>
           </div>
         </div>

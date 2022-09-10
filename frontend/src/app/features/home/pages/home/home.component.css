@@ -4,9 +4,12 @@
   gap: 1rem;
 }
 
-.resource,
-.navigation {
+.resource {
   padding: 0 1rem;
+}
+
+.navigation {
+  padding: 0 1rem 0 0;
 }
 
 .navigation {

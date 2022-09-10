@@ -9,6 +9,7 @@ export class Website {
     public stars: number,
     public comments: string[],
     public image?: string,
-    public _id?: string
+    public _id?: string,
+    public inUser?: boolean,
   ) {}
 }

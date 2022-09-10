@@ -6,14 +6,14 @@ import { CardResourcesComponent } from './card-resources/card-resources.componen
 
 @NgModule({
   declarations: [
-    CardResourcesComponent
+    CardResourcesComponent,
   ],
   imports: [
     CommonModule,
     RouterModule
   ],
   exports: [
-    CardResourcesComponent
+    CardResourcesComponent,
   ]
 })
 export class ComponentsModule { }

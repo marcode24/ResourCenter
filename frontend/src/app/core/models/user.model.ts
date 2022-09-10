@@ -10,6 +10,7 @@ export class User {
     public lastName?: string,
     public password?: string,
     public websitesCommented?: Website[],
+    public websitesSaved?: string[],
     public _id?: string,
   ) {}
 }

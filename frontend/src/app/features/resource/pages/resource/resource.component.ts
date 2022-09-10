@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin, Observable } from 'rxjs';
 
 import { ResourceService } from '@services/resource.service';
+import { UserService } from '@services/user.service';
 import { WebsiteService } from '@services/website.service';
 
 import { Website } from '@models/website.model';
@@ -29,10 +30,11 @@ export class ResourceComponent implements OnInit {
   isLoading: boolean = true;
 
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private websiteService: WebsiteService,
-    private resourceService: ResourceService
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly websiteService: WebsiteService,
+    private readonly resourceService: ResourceService,
+    private readonly userService: UserService,
+    private readonly router: Router
     ) { }
 
   ngOnInit(): void {
@@ -49,8 +51,8 @@ export class ResourceComponent implements OnInit {
       next: ({ resources, resource, websites }) => {
         this.resource = resource;
         this.websites = websites;
-        this.resources = resources;
         console.log(this.websites);
+        this.resources = resources;
       },
       complete: () => {
         this.isLoading = false;
@@ -69,6 +71,18 @@ export class ResourceComponent implements OnInit {
         this.websites = websites;
       }
     })
+  }
+
+  modifySavedWebsites(websiteId: string): void{
+    this.userService.modifySavedWebsites(websiteId).subscribe({
+      next: () => {
+        this.websites.map(website => {
+          if(website._id === websiteId) {
+            website.inUser = !website.inUser;
+          }
+        })
+      }
+    });
   }
 
 }

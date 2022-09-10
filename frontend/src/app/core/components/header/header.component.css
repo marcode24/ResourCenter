@@ -103,9 +103,9 @@ header .header-wrapper .options .bars {
 
 .dropdown ul {
   list-style-type: none;
-  display: block;
+  display: flex;
+  flex-direction: column;
   margin: 1rem 0 0 0;
-  padding: 0;
   position: absolute;
   width: 100%;
   box-shadow: var(--box-shadow-drop);
@@ -113,51 +113,57 @@ header .header-wrapper .options .bars {
   border-radius: 12px;
 }
 
-.dropdown a {
-  display: block;
-  padding: 0 0 0 10px;
-  text-decoration: none;
-  line-height: 40px;
-  font-size: 17px;
-  font-weight: 500;
-  color: #999;
-  background-color: var(--bg-color-3);
-}
-.dropdown li {
+.dropdown ul li {
   height: 0;
   overflow: hidden;
   transition: 0.15s;
+  background: var(--bg-color-3);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #999;
 }
 
-.dropdown.hover li {
+.dropdown ul li a:visited {
+  color: #999;
+}
+
+.dropdown.hover ul li {
   transition-delay: 0.2s;
 }
 
-.dropdown li:first-child a {
+.dropdown ul li a {
+  color: #999;
+  display: block;
+  padding: 0 0 0 10px;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.dtop .dropdown ul li:first-child a {
   border-radius: 2px 2px 0 0;
 }
 
-.dropdown li:last-child a {
+.dropdown ul li:last-child a {
   border-radius: 0 0 2px 2px;
 }
 
-.dropdown a:hover,
-.dropdown.toggle > label:hover,
-.dropdown.toggle > input:checked ~ label {
-  color: var(--font-color-1);
+.dropdown ul a:hover,
+.dropdown.toggle ul > label:hover,
+.dropdown.toggle ul > input:checked ~ label {
+  color: var(--font-color-4) !important;
   cursor: pointer;
 }
-.dropdown > a:hover::after,
-.dropdown.toggle > label:hover::after,
-.dropdown.toggle > input:checked ~ label::after {
+.dropdown ul > a:hover::after,
+.dropdown.toggle ul > label:hover::after,
+.dropdown.toggle ul > input:checked ~ label::after {
   cursor: pointer;
-  border-top-color: #aaa;
 }
-.dropdown li:first-child a:hover::before {
+.dropdown ul li:first-child a:hover::before {
   cursor: pointer;
-  border-bottom-color: #eee;
 }
-.dropdown.hover:hover li,
+.dropdown.hover:hover ul li,
 .dropdown.toggle > input:checked ~ ul li {
   cursor: pointer;
   height: 40px;

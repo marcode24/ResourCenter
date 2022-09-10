@@ -1,75 +1,13 @@
-.resource {
-  padding: 0.8rem 1rem;
-}
-
-.top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 250px;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #b8c1ce77;
-}
-
-.top .title-wrapper {
+.saved {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  padding: 0 1rem;
 }
 
-.top .title-wrapper .title {
-  font-size: 38px;
+.saved .title {
+  font-size: 36px;
   font-weight: 600;
   color: var(--font-color-1);
-}
-
-.top .title-wrapper a {
-  color: var(--font-color-4);
-  font-size: 20px;
-  font-weight: 400;
-  text-decoration: none;
-}
-
-.top .title-wrapper .description {
-  font-weight: 500;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  white-space: normal;
-  height: 70px;
-  max-height: 70px;
-  color: var(--font-color-1);
-  max-width: 80%;
-}
-
-.top picture {
-  width: 400px;
-  height: 200px;
-  min-width: 400px;
-  border-radius: 12px;
-  opacity: 1;
-}
-
-.top picture img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: inherit;
-}
-
-.main-wrapper {
-  gap: 1rem;
-}
-
-.input-mobile {
-  display: none;
-  position: sticky;
-  top: 4.5rem;
-  height: 4rem;
-  z-index: 20;
-  background: var(--bg-color-2);
 }
 
 .cards {
@@ -161,70 +99,13 @@
   cursor: pointer;
 }
 
-.navigation {
-  opacity: 1;
-}
-
-.navigation .options {
-  position: sticky;
-  top: 6rem;
-  z-index: 99;
-}
-
 @media (max-width: 768px) {
-  .cards {
-    margin: 0;
-  }
   .main-wrapper {
-    gap: 0;
-    padding: 0;
-  }
-  .input-mobile {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 100%;
-  }
-  .input-mobile .input {
-    width: 50%;
-  }
-  .navigation {
-    opacity: 0;
-    display: none;
-  }
-  .top picture {
-    min-width: 200px;
+    grid-template-columns: 100%;
   }
 }
 
 @media (max-width: 480px) {
-  .input-mobile .input {
-    width: 100%;
-    justify-self: center;
-  }
-  .top {
-    min-height: auto;
-  }
-
-  .top .title-wrapper .title {
-    font-size: 28px;
-  }
-
-  .top .title-wrapper a {
-    font-size: 16px;
-  }
-
-  .top .title-wrapper .description {
-    max-width: 100%;
-    font-size: 15px;
-    height: 70px;
-  }
-
-  .top picture {
-    opacity: 0;
-    display: none;
-  }
-
   .cards {
     grid-template-columns: repeat(1, 1fr);
   }
