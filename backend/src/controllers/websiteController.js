@@ -1,6 +1,7 @@
 const { request, response } = require("express");
 const { resourceExist } = require("../helpers/validateResource");
 const Website = require("../models/websiteModel");
+const User = require("../models/userModel");
 
 const createWebsite = async (req = request, res = response) => {
   try {
@@ -75,6 +76,29 @@ const getWebsitesByResource = async (req = request, res = response) => {
   }
 };
 
+const getWebsitesByUser = async (req = request, res = response) => {
+  try {
+    const { id: userId } = req;
+    const { skip = 0, limit = 10 } = req.query;
+    const userFound = await User.findById(userId, "websitesSaved")
+      .populate({
+        path: "websitesSaved",
+        select: "-__v -comments",
+      })
+      .slice("websitesSaved", [+skip, +limit]);
+    res.status(200).json({
+      ok: true,
+      websites: userFound.websitesSaved,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: "Something went wrong, try again",
+    });
+  }
+};
+
 const getWebsiteById = async (req = request, res = response) => {
   try {
     const websiteID = req.params.id;
@@ -110,4 +134,5 @@ module.exports = {
   getWebsites,
   getWebsitesByResource,
   getWebsiteById,
+  getWebsitesByUser,
 };
