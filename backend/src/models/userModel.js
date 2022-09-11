@@ -28,6 +28,10 @@ const userSchema = Schema({
     type: Boolean,
     default: false,
   },
+  tour: {
+    type: Boolean,
+    default: true,
+  },
   websitesSaved: [
     {
       type: SchemaTypes.ObjectId,

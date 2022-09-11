@@ -61,6 +61,31 @@ const changeTheme = async (req = request, res = response) => {
   }
 };
 
+const changeVisibleTour = async (req = request, res = response) => {
+  try {
+    const { id: userId } = req;
+    const userDB = await User.findById(userId);
+    if (!userDB) {
+      return res.json({
+        ok: false,
+        msg: "user not found, try again",
+      });
+    }
+    res.status(200).json({
+      ok: true,
+      msg: "show tour updated correctly",
+    });
+    userDB.tour = false;
+    await userDB.save();
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      ok: false,
+      msg: "Something went wrong",
+    });
+  }
+};
+
 const modifyPreferences = async (req = request, res = response) => {
   const { id: userId } = req;
   try {
@@ -111,5 +136,6 @@ const modifyPreferences = async (req = request, res = response) => {
 module.exports = {
   createUser,
   changeTheme,
+  changeVisibleTour,
   modifyPreferences,
 };
