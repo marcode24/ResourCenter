@@ -10,6 +10,6 @@
       placeholder="¿Qué está pasando?"></textarea>
   </div>
   <div class="options">
-    <button (click)="publish()" class="btn btn-primary btn-lg">Publish</button>
+    <button [disabled]="stars === 0" (click)="publish()" class="btn btn-primary">Publish</button>
   </div>
 </div>

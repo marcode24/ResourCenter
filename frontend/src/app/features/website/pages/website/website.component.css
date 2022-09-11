@@ -1,6 +1,11 @@
+.main-wrapper {
+  grid-template-columns: auto 450px;
+}
+
 .website {
   padding: 0.8rem 1rem;
 }
+
 .card-website {
   position: relative;
   background: var(--bg-color-3);
@@ -24,7 +29,6 @@
 .card-website picture img {
   max-width: 100%;
   width: 100%;
-  height: 100%;
   object-fit: cover;
   border-radius: inherit;
 }
@@ -32,7 +36,7 @@
 .card-website .card-body {
   padding: 2rem 2.4rem;
   display: flex;
-  gap: 5px;
+  gap: 10px;
   flex-direction: column;
   color: var(--font-color-1);
 }
@@ -49,7 +53,7 @@
 }
 
 .card-website .card-body .content {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   font-size: 20px;
   font-weight: 600;
 }
@@ -58,15 +62,15 @@
   display: flex;
   gap: 10px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .details .options {
-  margin-top: 0.7rem;
   color: var(--font-color-5);
 }
 
 .comments-section {
-  padding: 1rem 1.2rem;
+  padding: 0 1rem;
   max-width: 90%;
   margin: 0 auto;
 }
@@ -75,4 +79,31 @@
   color: var(--font-color-1);
   font-size: 34px;
   font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .main-wrapper {
+    grid-template-columns: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-website .card-body {
+    padding: 1.4rem 1rem;
+  }
+  .card-website .card-body .title {
+    font-size: 28px;
+  }
+  .card-website .card-body .content {
+    font-size: 16px;
+  }
+  .main-wrapper {
+    grid-template-columns: 100%;
+  }
+  .comments-section {
+    max-width: 100%;
+  }
+  .comments-section span {
+    font-size: 26px;
+  }
 }

@@ -1,6 +1,13 @@
+.welcome {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--font-color-4);
+  text-align: center;
+}
+
 .progress-wrap {
   z-index: 201;
-  max-width: 80%;
+  max-width: 90%;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -69,7 +76,7 @@
 .slider {
   width: 100%;
   overflow: hidden;
-  margin: 1.5rem 0;
+  margin: 1rem 0 0 0;
 }
 
 .slider .pages {
@@ -95,6 +102,8 @@
 
 .page img {
   width: 400px;
+  min-width: 350px;
+  max-width: 400px;
   height: auto;
   object-fit: cover;
   border-radius: 0.8rem;
@@ -105,4 +114,26 @@
   font-weight: 500;
   color: var(--font-color-1);
   padding: 0 1rem;
+}
+
+@media (max-width: 480px) {
+  .page img {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .page .description {
+    font-size: 17px;
+  }
+
+  .modal-content {
+    border-radius: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    justify-content: center;
+  }
+
+  .progress-wrap {
+    width: 92%;
+  }
 }

@@ -51,7 +51,6 @@ export class ResourceComponent implements OnInit {
       next: ({ resources, resource, websites }) => {
         this.resource = resource;
         this.websites = websites;
-        console.log(this.websites);
         this.resources = resources;
       },
       complete: () => {

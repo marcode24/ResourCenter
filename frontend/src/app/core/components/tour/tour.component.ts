@@ -22,15 +22,13 @@ export class TourComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('modalTour') modalTour: ElementRef;
 
   private marginLeft: number = 20;
-  private currentStep: number = 1;
+  currentStep: number = 1;
 
   private modalSubscription: Subscription;
 
   itemStepsTour: ITour[];
   firstItemStepTour: ITour;
 
-  prev: boolean = false;
-  next: boolean = false;
   final: boolean = false;
 
   constructor(
@@ -94,15 +92,8 @@ export class TourComponent implements OnInit, AfterViewInit, OnDestroy {
     });
     const activeSteps = document.querySelectorAll('.active');
     this.progress.nativeElement.style.width =  ((activeSteps.length - 1) / (this.steps.length - 1)) * 100 + "%";
-    if (this.currentStep === 1) {
-      this.prev = true;
-    } else if (this.currentStep === this.steps.length) {
-      this.next = true;
-      this.final = true;
-    } else {
-      this.next = false;
-      this.prev = false;
-    }
+
+    this.final = this.currentStep === this.steps.length;
 
   }
 

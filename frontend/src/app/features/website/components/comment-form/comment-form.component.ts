@@ -39,7 +39,9 @@ export class CommentFormComponent implements OnInit {
     if(!this.authService.isAuthenticated()) {
       return this.authService.showModalAuth('login');
     }
-    this.newComment.emit(this.createComment());
+    if(this.stars > 0) {
+      this.newComment.emit(this.createComment());
+    }
 
   }
 

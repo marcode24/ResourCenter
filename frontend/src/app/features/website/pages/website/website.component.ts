@@ -54,7 +54,6 @@ export class WebsiteComponent implements OnInit, OnDestroy {
     }).subscribe({
       next: ({ website, comments }) => {
         this.website = website;
-        console.log({website});
         this.comments = comments;
       },
       complete: () => {
@@ -75,7 +74,6 @@ export class WebsiteComponent implements OnInit, OnDestroy {
       next: (comment) => {
         this.commentBefore = true;
         this.comments.push(comment);
-        console.log(this.comments);
       }
     })
   }

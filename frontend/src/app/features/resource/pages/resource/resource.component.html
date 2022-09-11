@@ -13,7 +13,11 @@
     <div class="input-mobile">
       <app-search-input class="input" (search)="searchWebsites($event)"></app-search-input>
     </div>
-    <div class="cards">
+    <div class="no-resources" *ngIf="websites && websites.length === 0">
+      <img src="/assets/images/coming-soon.svg" alt="no-resources">
+      <span class="description">Coming soon</span>
+    </div>
+    <div class="cards" *ngIf="websites && websites.length > 0">
       <div class="card-resource" *ngFor="let website of websites">
         <picture>
           <img [src]="website.image" loading="lazy" alt="prev-image">
