@@ -15,8 +15,8 @@ export default class Storage {
     return localStorage.getItem(key);
   }
 
-  static saveLocalStorage(name: string, value: string) {
-    localStorage.setItem(name, value);
+  static saveLocalStorage(name: string, value: string | boolean) {
+    localStorage.setItem(name, value.toString());
   }
 
   static deleteLocalStorage(name: string) {

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { environment } from 'environments/environment';
 import { map, Observable } from 'rxjs';
 
@@ -15,6 +15,10 @@ const base_url = environment.base_url;
   providedIn: 'root'
 })
 export class UserService {
+  private bodyElement = document.body as HTMLBodyElement;
+  @ViewChild('modalTour') modalTour: ElementRef;
+
+  showModalEmitter: EventEmitter<boolean> = new EventEmitter();
 
   get headers() {
     return {
@@ -29,6 +33,29 @@ export class UserService {
     private authService: AuthService
   ) { }
 
+  showTour(show: boolean): void {
+    if(!show)  {
+      this.bodyElement.classList.remove('modal-open');
+    } else {
+      this.bodyElement.classList.add('modal-open')
+    }
+    this.showModalEmitter.emit(show);
+
+  }
+
+  changeTourVisibilityLocal (): void {
+    Storage.saveLocalStorage('tour', false);
+    if(this.authService.isAuthenticated()) {
+      this.changeTourVisibility();
+    }
+    this.showModalEmitter.emit(false);
+    this.bodyElement.classList.remove('modal-open');
+  }
+
+  private changeTourVisibility(): void {
+    const url = `${base_url}/user/tour`;
+    this.http.patch(url, {}, this.headers).subscribe();
+  }
 
   setTheme(darkMode: boolean): void {
     const url = `${base_url}/user/theme`;

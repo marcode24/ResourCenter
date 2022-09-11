@@ -1,4 +1,4 @@
-<div class="modal modal-open">
+<div class="modal" #modalTour>
   <div class="modal-content">
     <div class="body">
       <div class="progress-wrap">
@@ -28,7 +28,8 @@
       </div>
       <div class="buttons">
         <button [disabled]="prev" (click)="prevStep()" class="btn btn-primary btn-outline" disabled>Prev</button>
-        <button [disabled]="next" (click)="nextStep()" class="btn btn-primary">Next</button>
+        <button [disabled]="next" *ngIf="!final" (click)="nextStep()" class="btn btn-primary">Next</button>
+        <button *ngIf="final" (click)="updateTour()" class="btn btn-primary">Finish</button>
       </div>
     </div>
   </div>

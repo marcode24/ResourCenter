@@ -5,6 +5,7 @@ export class User {
     public email: string,
     public active: boolean,
     public darkMode: boolean,
+    public tour: boolean,
     public image: string,
     public name?: string,
     public lastName?: string,

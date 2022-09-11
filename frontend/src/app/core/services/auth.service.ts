@@ -41,7 +41,6 @@ export class AuthService {
   }
 
   showModalAuth(to: 'login'|'register'|'init'): void {
-    console.log({to});
     const isAuth: boolean = this.userActive ? true : false;
     this.isAuthenticatedEmitter.emit({ isAuth, to });
   }
