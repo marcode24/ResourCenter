@@ -15,4 +15,8 @@ app.use("/api/category", require("./routes/categoryRoute"));
 app.use("/api/user", require("./routes/userRoute"));
 app.use("/api/comment", require("./routes/commentRoute"));
 
+app.get("*", (req, res) => {
+  res.send("Resourcenter server working");
+});
+
 module.exports = app;
