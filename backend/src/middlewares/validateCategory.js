@@ -1,12 +1,5 @@
 const { request, response } = require("express");
-
-const validOptions = [
-  "Programming Language",
-  "Design",
-  "IDE",
-  "Text Editor",
-  "Language",
-];
+const { isMongoId } = require("../helpers/mongo-id");
 
 const validateCategory = (req = request, res = response, next) => {
   const category = req.body.category || null;
@@ -16,10 +9,10 @@ const validateCategory = (req = request, res = response, next) => {
       msg: "Must provide a category",
     });
   }
-  if (!validOptions.includes(category)) {
+  if (!isMongoId(category)) {
     return res.status(400).json({
       ok: false,
-      msg: "Must provide a valid category",
+      msg: "Must provide a valid mongo id",
     });
   }
   next();

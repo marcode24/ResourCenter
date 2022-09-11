@@ -12,6 +12,17 @@ const validateMongoID = (req = request, res = response, next) => {
   next();
 };
 
+const validateCategoryID = (req = request, res = response, next) => {
+  const { category: categoryID } = req.query;
+  if (categoryID && !isMongoId(categoryID)) {
+    return res.status(400).json({
+      ok: false,
+      msg: "Must provide a valid category id",
+    });
+  }
+  next();
+};
+
 const validateResourceID = (req = request, res = response, next) => {
   const { resource: resourceID } = req.body;
   if (!resourceID || !isMongoId(resourceID)) {
@@ -26,4 +37,5 @@ const validateResourceID = (req = request, res = response, next) => {
 module.exports = {
   validateMongoID,
   validateResourceID,
+  validateCategoryID,
 };

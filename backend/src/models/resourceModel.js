@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, SchemaTypes } = require("mongoose");
 
 const resourceSchema = Schema({
   name: {
@@ -7,16 +7,19 @@ const resourceSchema = Schema({
   },
   description: {
     type: String,
+    default: null,
   },
   image: {
     type: String,
+    default: null,
   },
   link: {
     type: String,
     required: true,
   },
   category: {
-    type: String,
+    type: SchemaTypes.ObjectId,
+    ref: "category",
     required: true,
   },
 });

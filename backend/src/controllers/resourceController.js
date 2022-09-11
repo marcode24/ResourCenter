@@ -1,19 +1,21 @@
 const { request, response } = require("express");
+const categoryModel = require("../models/categoryModel");
 const Resource = require("../models/resourceModel");
 
 const createResource = async (req = request, res = response) => {
   try {
-    const name = req.body.name || null;
-    const regexName = new RegExp(name, "i");
-    const existResource = await Resource.findOne({ name: regexName });
-    if (existResource) {
-      return res.status(200).json({
+    const { category } = req.body;
+    const existCategory = await categoryModel.findById(category);
+    if (!existCategory) {
+      return res.status(404).json({
         ok: true,
-        msg: "One resource has a similar name",
+        msg: "category not found",
       });
     }
     const newResource = new Resource({ ...req.body });
     const resourceCreated = await newResource.save();
+    existCategory.resources.push(resourceCreated._id);
+    await existCategory.save();
     res.status(201).json({
       ok: true,
       resource: resourceCreated,
@@ -53,11 +55,12 @@ const updateResource = async (req = request, res = response) => {
 
 const getResources = async (req = request, res = response) => {
   try {
-    const { skip = 0, limit = 10 } = req.query;
-    const resources = await Resource.find({}, "", {
+    const { skip = 0, limit = 10, category } = req.query;
+    const finderResource = category ? { category } : {};
+    const resources = await Resource.find(finderResource, "", {
       limit,
       skip,
-    });
+    }).populate({ path: "category", select: "name" });
     res.status(200).json({
       ok: true,
       resources,

@@ -12,17 +12,24 @@ const websiteSchema = Schema({
   },
   description: {
     type: String,
+    default: null,
   },
   image: {
     type: String,
+    default: null,
   },
   link: {
     type: String,
     required: true,
   },
+  stars: {
+    type: Number,
+    default: 0,
+  },
   comments: [
     {
-      type: String,
+      type: SchemaTypes.ObjectId,
+      ref: "comment",
       default: [],
     },
   ],
