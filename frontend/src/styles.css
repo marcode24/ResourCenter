@@ -91,6 +91,38 @@ body.modal-open {
   background: var(--bg-scroll-thumb);
 }
 
+/* Modal styles */
+
+.modal {
+  z-index: 200;
+  background-color: rgba(71, 80, 87, 0.4);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.modal-open {
+  display: flex;
+  opacity: 1;
+  position: fixed;
+}
+
+.modal-content {
+  min-width: 500px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  max-width: 30rem;
+  background-color: var(--bg-color-modal);
+  padding: 1rem;
+  gap: 1.2rem;
+}
+
 /* Buttons styles */
 
 .btn {

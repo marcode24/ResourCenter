@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { HeaderComponent } from './header/header.component';
-
 import { SharedModule } from '@shared/shared.module';
+
+import { HeaderComponent } from './header/header.component';
+import { TourComponent } from './tour/tour.component';
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    TourComponent
   ],
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import { SharedModule } from '@shared/shared.module';
     RouterModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    TourComponent
   ]
 })
 export class ComponentsModule { }
